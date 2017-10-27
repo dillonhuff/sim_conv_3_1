@@ -25,11 +25,12 @@ int main() {
   state.lb_p4_clamped_stencil_update_stream$mem_2$raddr$reg0 = 0;
   state.lb_p4_clamped_stencil_update_stream$mem_2$waddr$reg0 = 0;
 
-  state.self_in_0 = 13;
+  state.self_in_0 = 1;
 
-  for (int i = 0; i < 100; i++) {
-    state.self_in_0 = state.self_in_0 + 1;
+  for (int i = 0; i < 30; i++) {
+    //state.self_in_0 = state.self_in_0 + 1;
     simulate(&state);
+    cout << "out " << i << " = " << state.self_out << endl;
   }
 
   cout << "out = " << state.self_out << endl;
