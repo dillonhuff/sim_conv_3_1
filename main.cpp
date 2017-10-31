@@ -1,6 +1,7 @@
 #include "DesignTop_sim.h"
 
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -27,12 +28,28 @@ int main() {
 
   state.self_in_0 = 1;
 
-  for (int i = 0; i < 30; i++) {
-    //state.self_in_0 = state.self_in_0 + 1;
+  int nRuns = 500000;
+
+  std::clock_t start, end;
+  start = std::clock();
+
+  for (int i = 0; i < nRuns; i++) {
+    state.self_clk_last = state.self_clk;
+    state.self_clk = i % 2;
+
     simulate(&state);
-    cout << "out " << i << " = " << state.self_out << endl;
+    //cout << "out " << i << " = " << state.self_out << endl;
   }
 
+  end = std::clock();
+
+  cout << "DONE." << endl;
+
+  double time_ms =
+    (end - start) / (double)(CLOCKS_PER_SEC / 1000);
+
+  cout << "Time to compute " << nRuns << " half cycles = " << time_ms << " ms" << endl;
+  
   cout << "out = " << state.self_out << endl;
 
 }

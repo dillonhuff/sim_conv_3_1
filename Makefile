@@ -1,2 +1,2 @@
 all:
-	clang++ -std=c++11 ./main.cpp ./DesignTop_sim.cpp
+	clang++ -std=c++11 -O3 ./main.cpp ./DesignTop_sim.cpp
