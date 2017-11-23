@@ -25,14 +25,22 @@ int main(int argc, char** argv) {
 
   std::clock_t start, end;
 
-  int nRuns = 500000;
+  int nRuns = 80;
 
   start = std::clock();
 
   for (int i = 0; i < nRuns; i++) {
     top->clk = i % 2;
     top->eval();
-    //cout << "out = " << top->out << endl;
+
+    if (top->clk == 0) {
+      cout << "out " << i << " = " << top->out << endl;
+    }
+
+    if (top->clk == 1) {
+
+      top->in_0 = top->in_0 + 1;
+    }
   }
 
   end = std::clock();
