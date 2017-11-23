@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
 
   std::clock_t start, end;
 
-  int nRuns = 80;
+  int nRuns = 70;
 
   start = std::clock();
 
@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
 
     if (top->clk == 1) {
 
-      top->in_0 = top->in_0 + 1;
+      top->in_0 = (top->in_0 + 1) % 25;
     }
   }
 
